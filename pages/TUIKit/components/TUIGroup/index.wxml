@@ -1,0 +1,158 @@
+<!--miniprogram/components/tui-group/group-profile/index.wxml-->
+<view class="group-information-box" bindshow="getgroupProfile">
+    <view class="group-box">
+        <text class="group-ID" bind:longpress="copyGroupID">群ID:{{conversation.groupProfile.groupID}}</text>
+        <view  bindtap="showMore" >
+        <text class="group-member">聊天成员:{{memberCount}}人</text>
+        <image wx:if="{{notShow}}"class=" icon-right" src="../../static/assets/down.svg"/>
+        <image wx:if="{{isShow}}" class=" icon-right" src="../../static/assets/up.svg" />
+        </view>
+    </view>
+    <view hidden="{{hidden}}" class="showdetail">
+         <view class="box" wx:for="{{groupMemberProfile}}" wx:if="{{index < 3}}"  wx:key="id" data-value="{{item}}" bindtap="handleJumpPage">
+            <image class="profile-box" src= '{{item.avatar|| "https://sdk-web-1252463788.cos.ap-hongkong.myqcloud.com/component/TUIKit/assets/avatar_21.png"}}'/>
+            <view class="groupownername-box">
+            <text class="groupownername" wx:if="{{item.role === 'Owner'}}">(群主)</text>
+             <text class="nick-box">{{item.nick||item.userID}}</text>
+             </view>
+          </view>
+        <view class="box" wx:if="{{showMore}}">
+            <image class="profile-box" src="../../static/assets/show.svg" bindtap="showMoreMember"/>
+            <text class="nick-box">更多</text>
+        </view>
+        <view class="left-box">
+         <view class="box-group" wx:if="{{userRole === 'PHYSICIAN'}}">
+            <image class="addmember" src="../../static/assets/addgroup.svg" bindtap="addMember"/>
+            <text class="addmember-text">添加成员</text>
+        </view>
+        <view class="box-group-quit">
+            <image class="quitgroup" src="../../static/assets/quitgroup.svg" catchtap="quitGroup"/>
+            <text class="quitgroup-text">{{showText}}</text>
+        </view>
+    </view>
+    </view>
+</view>
+<view class="pop-container">
+<view class="popup-mask" wx:if="{{popupToggle}}" >
+    <view class="pop-main" >
+        <view class="pop-main-header">
+        <text class="group-member-text">群成员</text>
+        <view class="show-group-call">
+            <text class="handlecall" wx:if="{{showGroupCall}}" bindtap="handleGroupCall">发起通话</text>
+            <text class="close" catchtap="close">关闭</text>
+        </view>
+        </view>
+    <view class="image-list" >
+    <view wx:if="{{callStatus}}" class="image-nick-box" wx:for="{{callGroupMemberProfile}}" wx:key="id" data-value="{{item}}" bindtap="handleGroupCallUserIDList">
+            <image class="image {{ checked.includes(selectedUserIDList, item.userID) && 'image-nick-box-active'}}"  src='{{item.avatar|| "https://sdk-web-1252463788.cos.ap-hongkong.myqcloud.com/component/TUIKit/assets/avatar_21.png"}}' />
+            <view class="groupowner-box">
+                <text class="groupownername-bootom"  wx:if="{{item.role==='Owner'}}">(群主)</text>
+                <text class="groupmembername" >{{item.nick||item.userID}}</text>
+            </view>  
+    </view>
+    <view wx:if="{{!callStatus}}" class="image-nick-box" wx:for="{{groupMemberProfile}}" wx:key="id" data-value="{{item}}" bindtap="handleGroupCallUserIDList">
+            <image class="image {{ checked.includes(selectedUserIDList, item.userID) && 'image-nick-box-active'}}"  src='{{item.avatar|| "https://sdk-web-1252463788.cos.ap-hongkong.myqcloud.com/component/TUIKit/assets/avatar_21.png"}}' />
+            <view class="groupowner-box">
+                <text class="groupownername-bootom"  wx:if="{{item.role==='Owner'}}">(群主)</text>
+                <text class="groupmembername" >{{item.nick||item.userID}}</text>
+            </view>  
+    </view>
+     <view class="moremember" wx:if="{{showGetMore}}">
+            <image class="image" src="../../static/assets/show.svg" bindtap="getMoreMember"/>
+        </view>
+    </view>
+    </view>
+</view>
+</view>
+<view class="pop-container">
+<view class="quitpop-mask" wx:if="{{quitPopupToggle}}">
+    <view class="quitpop">
+        <view class=" quit-box">
+            <view class="text-box">
+             <text class="confirmQuitgroup-text">退出群聊后会同步删除历史聊天记录，是否要退出群聊？</text>
+            </view>
+            <view class="text-box-qiut" catchtap="quitGroupConfirm">
+             <text class="quitgroup-confirm" >退出</text>
+             </view>
+        <view class="text-box-cancle" bindtap="quitGroupAbandon">
+        <text class="quitgroup-abandon" >取消</text>
+        </view>
+    </view>
+</view>
+</view>
+</view>
+<view class="quitpop-mask" wx:if="{{dismissPopupToggle}}">
+    <view class="quitpop">
+         <view class=" quit-box">
+             <view class="text-box">
+             <text class="confirmQuitgroup-text">是否解散群聊？</text>
+        </view>
+        <view class="text-box-qiut" catchtap="dismissGroupConfirm">
+             <text class="quitgroup-confirm" >确认</text>
+        </view>
+        <view class="text-box-cancle" bindtap="dismissGroupAbandon">
+            <text class="quitgroup-abandon" >取消</text>
+        </view>
+    </view>
+</view>
+</view>
+<view class="mask" wx:if="{{addPopupToggle}}" >
+    
+    <!-- <view class="popup">
+        <view class="popup-main">
+            <text>添加群成员</text>
+            <input class="input" type="number"  placeholder="请输入userID" bindinput='binduserIDInput' placeholder-style="color:#BBBBBB;"/>
+        </view>
+        <view class="popup-footer">
+           <button class="submit" catch:tap="submit">确认</button>
+            <button class="cancel"  catch:tap="close">取消</button>
+        </view>
+    </view> -->
+</view>
+<view>
+  <van-dialog
+      use-slot
+      title="添加群成员"
+      show="{{ show }}"
+      show-cancel-button
+      show-confirm-button
+      bind:close="cancle"
+      bind:confirm="submit"
+    >
+    <view class="content">
+      <view class="search">
+        <input class="input" placeholder="🔍搜索" type="text" bindinput="searchInfo"/>
+      </view>
+      <view class="content">
+        <van-checkbox-group value="{{ result }}" bind:change="onChange">
+          <van-cell-group>
+            <van-cell
+              wx:for="{{ friendList }}"
+              wx:key="index"
+              value-class="value-class"
+              clickable
+              data-index="{{ index }}"
+              bind:click="toggle"
+            >
+              <view slot="title">
+                <view class="van-cell-text">
+                  <image src="{{item.avatarUrl}}"></image>
+                  <text class="nickName">{{item.bz?item.bz:item.nickName}}</text>
+                </view>
+              </view>
+              <van-checkbox
+                catch:tap="noop"
+                class="checkboxes-{{ index }}"
+                name="{{ item.phone }}"
+              />
+            </van-cell>
+          </van-cell-group>
+        </van-checkbox-group>
+      </view>
+    </view>
+  </van-dialog>
+</view>
+<wxs src = './checked.wxs' module = 'checked'/>
+
+
+

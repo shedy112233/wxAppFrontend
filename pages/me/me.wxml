@@ -1,0 +1,85 @@
+<!--pages/me/me.wxml-->
+<view class="container">
+    <view class="tui-navigatorbar">
+      <!-- <view class="conversation-title">我的</view> -->
+    </view>
+    <view class="conversation-list-area">
+      <view class="userInfo" style="z-index: 1;">
+        <image src="{{Img}}" bind:tap="editImage"></image>
+        <view class="userInfo_text">
+          <view style="display: flex;">
+          {{nickName}}
+          <van-icon name="edit" style="margin-left: 8px;" bind:tap="editNickName" data-nickName="{{nickName}}" data-phone="{{phone}}"/>
+          </view>
+          <view>userID:{{phone}}</view>
+        </view>
+      </view>
+     <view wx:if="{{phone}}" style="margin-top: 4rpx;">
+      <view wx:if="{{userRole === 'PHYSICIAN'}}" class="item" bind:tap="getMyCode">
+        <view class="item_name">我的二维码(静态)</view>
+        <view class="right_arrow"></view>
+      </view>
+      <view wx:if="{{userRole === 'PHYSICIAN'}}" class="item" bind:tap="getMyActiveCode">
+        <view class="item_name">我的二维码(动态)</view>
+        <view class="right_arrow"></view>
+      </view>
+      <view wx:if="{{userRole === 'PHYSICIAN'}}" class="item" bind:tap="getInvitationCode">
+        <view class="item_name">邀请码</view>
+        <view class="right_arrow"></view>
+      </view>
+      <view class="item">
+        <view class="item_name">积分兑换</view>
+        <view class="right_arrow"></view>
+      </view>
+      <view class="item" class="item" bind:tap="toUserApply" wx:if="{{userRole === 'PHYSICIAN'}}">
+        <view class="item_name">用户申请</view>
+        <view class="right_arrow"></view>
+      </view>
+    </view>
+     <button wx:if="{{phone == ''}}" class="userInfo_btn" bind:tap="toLogin">登陆</button>
+     <button wx:else class="userInfo_btn_login" bind:tap="goBack">退出登陆</button>
+    </view>
+    <van-dialog
+      use-slot
+      title="我的二维码"
+      show="{{ isShow }}"
+      show-cancel-button
+      show-confirm-button
+      bind:close="onClose"
+      bind:confirm="onClose"
+      style="padding: 10rpx;"
+    >
+      <image src="../../images/code.png" style="width: 260px; height: 260px;" />
+      <!-- <image wx:if="{{isShowActive}}" src="{{qrCodeUrl}}" style="width: 260px; height: 260px;" /> wx:if="{{!isShowActive}}"-->
+    </van-dialog>
+    <van-dialog
+      use-slot
+      title="邀请码"
+      show="{{ showCode }}"
+      show-cancel-button
+      show-confirm-button
+      bind:close="onClose"
+      bind:confirm="onClose"
+    >
+      <view style="padding: 50rpx;text-align: center;">{{inviteCode}}</view>
+    </van-dialog>
+    <van-dialog
+      use-slot
+      title="修改昵称"
+      show="{{ isEdit }}"
+      show-cancel-button
+      show-confirm-button
+      bind:close="onClose"
+      bind:confirm="fnConfirm"
+      style="padding: 10rpx;"
+    >
+    <van-cell-group>
+      <van-field
+        label="昵称"
+        model:value="{{ value }}"
+        placeholder="请输昵称"
+        border="{{ false }}"
+      />
+    </van-cell-group>
+  </van-dialog>
+</view>

@@ -1,0 +1,31 @@
+<!--pages/msg/msg.wxml-->
+<view style="height: 100%;">
+  <view class="container">
+    <view class="tui-navigatorbar">
+     <view class="conversation-title">消息</view>
+   </view>
+   <view class="conversation-list-area">
+   <view wx:for="{{conversationList}}" wx:key="index" data-type="{{item.type}}">
+    <van-swipe-cell right-width="{{200}}">
+      <view slot="left">选择</view>
+      <view class="box">
+        <image src="{{item.userProfile.avatar}}"></image>
+        <view class="text">
+          <view class="text_margin">
+            <view class="text_nickName">{{item.userProfile.nick}}</view>
+            <view class="text_latest_msg">{{item.lastMessage.payload.text}}</view>
+          </view>
+          <view class="text_r">6小时前</view>
+        </view>
+      </view>
+      <view slot="right" class="swip_r">
+        <view class="r_box" style="background-color: orange;">免打扰</view>
+        <view class="r_box" style="background-color: palegreen;">置顶</view>
+        <view class="r_box" style="background-color: red;">删除</view>
+      </view>
+    </van-swipe-cell>
+   </view>
+   
+   </view>
+  </view>
+</view>

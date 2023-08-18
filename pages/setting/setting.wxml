@@ -1,0 +1,37 @@
+<!--pages/setting/setting.wxml-->
+<view style="height: 100%;">
+  <view class="container">
+    <view class="tui-navigatorbar">
+      <image class="tui-navigatorbar-back" bindtap="goBack" src="../TUIKit/static/assets/ic_back_white.svg" />
+     <view class="conversation-title">资料设置</view>
+   </view>
+   <view class="conversation-list-area">
+    <view>
+      <view class="item" bind:tap="toSet" data-name="bz">
+        <view class="item_name">设置备注和标签</view>
+        <view class="right_arrow"></view>
+      </view>
+      <view class="item">
+        <view class="item_name">好友权限</view>
+        <view class="right_arrow"></view>
+      </view>
+    </view>
+    <view class="t_box">
+      <view class="item">
+        <view class="item_name">把他推荐给朋友</view>
+        <view class="right_arrow"></view>
+      </view>
+      <view class="item">
+        <view class="item_name">加入黑名单</view>
+        <view class="right_arrow"></view>
+      </view>
+    </view>
+    <view class="t_button">
+      <van-button block bind:tap="toSendMsg">
+        <van-icon name="chat-o" /> <text style="color: red;font-size: 40rpx;">删除</text>
+      </van-button>
+    </view>
+   </view>
+  </view>
+</view>
+

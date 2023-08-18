@@ -1,0 +1,27 @@
+<!--pages/friend/components/save/save.wxml-->
+<view class="main_box">
+  <view class="title">标签名字</view>
+  <view>
+    <van-cell-group>
+      <van-field
+        model:value="{{ tagName }}"
+        placeholder="例如家人、朋友"
+        border="{{ true }}"
+      />
+    </van-cell-group>
+  </view>
+  <view class="title">成员</view>
+  <view class="member">
+    <view wx:for="{{member}}" wx:key="index" style="text-align: center;margin-left: 8rpx;">
+      <image  class="imageStyle" src="{{item.avatarUrl}}"/>
+      <view style="font-size: 24rpx;margin-left: 8rpx;">{{item.nickName}}</view>
+    </view>
+    <view class="add_box" bind:tap="addUser">
+      <image class="imageStyle" src="./../../../../images/add.png"/>
+    </view>
+  </view>
+  <view class="bottom_box">
+    <view class="left" bind:tap="cancle">取消</view>
+    <view class="right" bind:tap="submit">保存</view>
+  </view>
+</view>

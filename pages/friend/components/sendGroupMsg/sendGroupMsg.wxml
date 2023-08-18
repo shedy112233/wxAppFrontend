@@ -1,0 +1,73 @@
+<view class="container">
+  <view class="tui-navigatorbar">
+    <image class="tui-navigatorbar-back" bindtap="goBack" src="./../../../TUIKit/static/assets/ic_back_white.svg" />
+    <view class="conversation-title">群发消息</view>
+  </view>
+  <scroll-view  class="message-list" bindtap="triggerClose">
+    <view class="sendPerson">
+      <view class="tip">你讲发消息给1个朋友</view>
+      <view class="nick">张三</view>
+    </view>
+  </scroll-view>
+  <view class="TUI-message-input-container">
+    <view class="TUI-message-input">
+        <image class="TUI-icon" bindtap="switchAudio" src="{{isAudio ? './../../../TUIKit/static/assets/keyboard.svg' : './../../../TUIKit/static/assets/audio.svg'}}" />
+        <view wx:if="{{!isAudio || isEmoji}}" class="TUI-message-input-main {{ focus && 'TUI-message-input-main-focus'}}" >
+            <textarea  class="TUI-message-input-area" adjust-position="{{false}}" cursor-spacing="20"
+                value="{{message}}" bindinput="onInputValueChange" maxlength="-1" type="text" auto-height="{{true}}"
+                placeholder="" placeholder-class="input-placeholder" confirm-type="send" show-confirm-bar="{{false}}"
+                bindfocus="inputBindFocus"
+                bindblur="inputBindBlur" 
+                bindconfirm="sendTextMessage"/>
+        </view>
+        <view wx:if="{{isAudio}}" class="TUI-message-input-main"
+            bind:longpress="handleLongPress"
+            bind:touchmove="handleTouchMove"
+            bind:touchend="handleTouchEnd"
+            style="display: flex; justify-content: center; font-size: 32rpx; font-family: PingFangSC-Regular; height: 30px">
+            <text >{{text}}</text>
+        </view>
+        <view class="TUI-message-input-functions" hover-class="none">
+          <view class="TUI-sendMessage-btn">
+              <image class="TUI-icon" bindtap="handleEmoji" src="./../../../TUIKit/static/assets/face-emoji.svg" />
+          </view>
+            <view wx:if="{{!sendMessageBtn}}" bindtap="handleExtensions" class="TUI-sendMessage-btn">
+                <image class="TUI-icon" src="./../../../TUIKit/static/assets/more.svg" />
+            </view>
+            <view wx:else class="TUI-sendMessage-btn" bindtap="sendTextMessage">
+                发送
+            </view>
+        </view>
+    </view>
+  </view>
+  <view wx:if="{{displayFlag === 'extension'}}" class="TUI-Extensions">
+        <view class="TUI-Extension-slot" bindtap="handleSendPicture">
+            <image class="TUI-Extension-icon" src="../../../TUIKit/static/assets/take-photo.svg" />
+            <view class="TUI-Extension-slot-name">拍摄照片</view>
+        </view>
+        <view class="TUI-Extension-slot" bindtap="handleSendImage">
+            <image class="TUI-Extension-icon" src="../../../TUIKit/static/assets/send-img.svg" />
+            <view class="TUI-Extension-slot-name">发送图片</view>
+        </view>
+        <view class="TUI-Extension-slot" bindtap="handleShootVideo">
+            <image class="TUI-Extension-icon" src="../../../TUIKit/static/assets/take-video.svg" />
+            <view class="TUI-Extension-slot-name">拍摄视频</view>
+        </view>
+                <view class="TUI-Extension-slot" bindtap="handleSendVideo">
+            <image class="TUI-Extension-icon" src="../../../TUIKit/static/assets/send-video.svg" />
+            <view class="TUI-Extension-slot-name">发送视频</view>
+        </view>
+        <view class="TUI-Extension-slot" data-value="{{1}}"   bindtap="handleCheckAuthorize" >
+            <image class="TUI-Extension-icon" src="../../../TUIKit/static/assets/audio-calling.svg" />
+            <view class="TUI-Extension-slot-name">语音通话</view>
+        </view>
+        <view class="TUI-Extension-slot" data-value="{{2}}"   bindtap="handleCheckAuthorize" >
+            <image class="TUI-Extension-icon" src="../../../TUIKit/static/assets/video-calling.svg" />
+            <view class="TUI-Extension-slot-name">视频通话</view>
+        </view>
+        <view class="TUI-Extension-slot" bindtap="handleServiceEvaluation">
+            <image class="TUI-Extension-icon" src="../../../TUIKit/static/assets/service-assess.svg" />
+            <view class="TUI-Extension-slot-name">服务评价</view>
+        </view>
+    </view>
+</view>

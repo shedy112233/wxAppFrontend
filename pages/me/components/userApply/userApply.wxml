@@ -1,0 +1,35 @@
+<view>
+  <van-nav-bar title="用户申请" left-text="返回" left-arrow bind:click-left="onClickLeft"
+  bind:click-right="onClickRight">
+    <van-icon name="search" slot="right" />
+  </van-nav-bar>
+  <van-search
+    wx:if="{{isSearch}}"
+    input-align="center"
+    show-action
+    placeholder="请输入搜索关键词"
+    bind:blur="onSearch"
+    bind:cancel="onCancel"
+  />
+  <van-empty
+    class="custom-image"
+    image="./../../../../images/no_data.png"
+    description="描述文字"
+    wx:if="{{invitedUserList.length === 0}}"
+  />
+  <view class="box" wx:if="{{invitedUserList.length > 0}}" wx:for="{{invitedUserList}}" wx:key="index">
+    <view class="box_reason">申请原因:{{item.applyReason}}</view>
+    <view class="box_bottom">
+      <view><image class="box_image" src="{{item.invitedAvatar}}"/></view>
+      <view class="box_nick">
+        <view>申请人:{{item.invitedNickName}}</view>
+        <view>ID:{{item.invitedPhone}}</view>
+      </view>
+      <view class="box_buttons">
+        <button type="primary" size="mini" class="box_button" bind:tap="sureInvite" data-info="{{item}}">同意</button>
+        <button type="warn" size="mini" class="box_button" bind:tap="refuseInvite" data-info="{{item}}">拒绝</button>
+      </view>
+    </view>
+  </view>
+</view>
+

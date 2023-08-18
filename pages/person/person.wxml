@@ -1,0 +1,54 @@
+<!--pages/person/person.wxml-->
+<view style="height: 100%;">
+  <view class="container">
+    <view class="tui-navigatorbar">
+      <image class="tui-navigatorbar-back" bindtap="goBack" src="../TUIKit/static/assets/ic_back_white.svg" />
+     <view class="conversation-title"></view>
+   </view>
+   <view class="conversation-list-area">
+    <view class="main">
+      <view class="image_border">
+        <image src="{{avatarUrl}}"></image>
+      </view>
+      <view class="context">
+        <view>昵称：{{nickName}}<text wx:if="{{bz}}">({{bz}})</text></view>
+        <view class="phone">userID：{{phone}}</view>
+      </view>
+      <view class="t_icon">
+        <van-icon name="ellipsis" size="60rpx" bind:tap='bindShowMsg'/>
+      </view>
+    </view>
+    <van-cell title="标签" is-link value="{{tagName}}" bind:tap="toTagsSetting"/>
+    <view class="buttons">
+      <van-button block bind:tap="toSendMsg">
+        <van-icon name="chat-o" /> 发消息
+      </van-button>
+      <van-button block bind:tap="toTel">音频通话</van-button>
+    </view>
+   </view>
+  </view>
+  <van-action-sheet
+    style="z-index: 99;"
+    show="{{ show }}"
+    actions="{{ actions }}"
+    bind:close="onClose"
+    bind:select="onSelect"
+  />
+  <van-dialog
+    use-slot
+    title="备注设置"
+    show="{{ isSettingBz }}"
+    show-cancel-button
+    bind:confirm="sureInfo"
+    bind:close="fnClose"
+  >
+  <van-cell-group>
+    <van-field
+      label="备注"
+      model:value="{{ bz }}"
+      placeholder="请输入备注"
+      border="{{ false }}"
+    />
+  </van-cell-group>
+  </van-dialog>
+</view>

@@ -1,0 +1,24 @@
+<view>
+  <view class="container">
+    <view class="tui-navigatorbar">
+     <view class="conversation-title">资讯</view>
+    </view>
+  </view>
+  <view class="conversation-list-area">
+    <view class="imageBox">
+      <swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}">
+        <swiper-item class="item" wx:for="{{picList}}" wx:key="index">
+          <!-- <web-view src="https://www.baidu.com"><image src="{{item.pic}}" bind:tap="toOtherUrl"/></web-view> -->
+          <image src="{{item.pic}}" bind:tap="toOtherUrl"/>
+        </swiper-item>
+      </swiper>
+    </view>
+    <view>
+      <view class="infoBar">
+        <view>最新资讯</view>
+        <view><a>更多 ></a></view>
+      </view>
+      <van-cell wx:for="{{artList}}" wx:key="i" title="{{item.title}}" label="{{item.introduction}}" bind:tap="toArtInfo" data-art="{{item}}"/>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,36 @@
+<!--pages/friend/components/selectUser/selectUser.wxml-->
+<view class="content">
+  <view class="search">
+    <input class="input" placeholder="🔍搜索" type="text" bindinput="searchInfo"/>
+  </view>
+  <view class="content">
+    <van-checkbox-group value="{{ result }}" bind:change="onChange">
+      <van-cell-group>
+        <van-cell
+          wx:for="{{ tagList }}"
+          wx:key="index"
+          title="{{item.tagName}} ({{item.toolsImGroupTagUserVos.length}})"
+          value-class="value-class"
+          clickable
+          data-index="{{ index }}"
+          bind:click="toggle"
+        >
+          <!-- <view slot="title">
+            <view class="van-cell-text">
+              <image src="{{item.avatarUrl}}"></image>
+              <text class="nickName">{{item.nickName}}</text>
+            </view>
+          </view> -->
+          <van-checkbox
+            catch:tap="noop"
+            class="checkboxes-{{ index }}"
+            name="{{ item.tagId }}"
+          />
+        </van-cell>
+      </van-cell-group>
+    </van-checkbox-group>
+  </view>
+  <view class="bottom_box">
+    <view class="bottom_font" bind:tap="clear">清理 <text wx:if="{{result.length > 0}}">({{result.length}})</text></view>
+  </view>
+</view>

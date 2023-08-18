@@ -1,0 +1,233 @@
+/* pages/friend/friend.wxss */
+page{
+  width: 100%;
+  min-height: 100vh;
+  text-align: center;
+}
+.container{
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+}
+.tui-navigatorbar{
+  position: absolute;
+  top: 0;
+  width: 750rpx;
+  height: 260rpx;
+  background-color: #006EFF;
+}
+.conversation-title {
+  position: absolute;
+  width: 350rpx;
+  height: 88rpx;
+  line-height: 56rpx;
+  font-size: 36rpx;
+  color: #FFFFFF;
+  bottom: 0;
+  left: 200rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.userInfo{
+  margin-top: 37px;
+  height: 180rpx;
+  width: 100%;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  padding: 16rpx;
+  /* background-color: rgb(4, 236, 248); */
+  background: -webkit-linear-gradient(#006EFF, #abe8eb); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#006EFF, #abe8eb); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#006EFF, #abe8eb); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#006EFF, #abe8eb); /* 标准的语法（必须放在最后） */
+}
+.userInfo image {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 30rpx;
+  margin-top: 16rpx;
+  margin-left: 12rpx;
+}
+.userInfo_text{
+  margin-top: 20rpx;
+  margin-left: 12rpx;
+}
+.userInfo_text view {
+  margin-top: 12rpx;
+  margin-left: 12rpx;
+}
+.tui-navigatorbar-back{
+  position: absolute;
+  width: 48rpx;
+  height: 48rpx;
+  left: 24rpx;
+  bottom: 20rpx;
+}
+.cell {
+  position: absolute;
+  top: 100rpx;
+}
+.title_box{
+  height: 180rpx;
+  padding-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+  border-width: 2px;
+  border-style: solid dashed dashed;
+  border-color: #fff transparent transparent;
+}
+.box_header{
+  font-weight: 600;
+}
+.box_content{
+  font-size: 10px;
+  font-weight: 400;
+}
+.box_switch {
+  width: 300rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.conversation-title {
+  position: absolute;
+  width: 350rpx;
+  height: 88rpx;
+  line-height: 56rpx;
+  font-size: 36rpx;
+  color: #FFFFFF;
+  bottom: 0;
+  left: 200rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.userInfo_btn{
+  position: absolute;
+  top: 400rpx;
+  width: 710rpx;
+  left: 20rpx;
+  border: 1rpx solid #006EFF;
+  border-radius: 60rpx;
+  color: #006EFF;
+}
+.userInfo_btn_login{
+  /* position: relative;
+  top: 400rpx; */
+  margin-top: 30rpx;
+  width: 710rpx;
+  left: 0rpx;
+  border: 1rpx solid #006EFF;
+  border-radius: 60rpx;
+  color: #006EFF;
+}
+.conversation-list-area {
+  position: absolute;
+  width: 100vw;
+  height: calc(100vh - 190px);
+  top: 172rpx;
+}
+
+.scoll-view {
+  width: 100%;
+  height: 100%;
+}
+
+.btn-show-more {
+  display: flex;
+  width: 160rpx;
+  height: 160rpx;
+  padding-left: 3rpx;
+
+}
+
+.picker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 96rpx;
+}
+.bottom-back{
+  height: 120px;
+  width: 100%;
+  background-color: #F4F5F9;
+  z-index: 3;
+}
+.bottom-area {
+  flex-direction: column;
+  position: absolute;
+  bottom: 80rpx;
+  right: 0;
+  left: 0;
+  margin: auto;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.im-link {
+  width: 218rpx;
+  height: 36rpx;
+  font-size: 28rpx;
+  line-height: 36rpx;
+  margin: 0 auto;
+  color: #006EFF;
+}
+.conversation-bubble {
+  padding-top: 40rpx;
+  position: absolute;
+  width: 300rpx;
+  padding-right: 3px;
+  background-color: #FFFFFF;
+  height: 320rpx;
+  bottom: 300rpx;
+  left: 220rpx;
+  z-index: 100;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.08);
+  border-radius: 14rpx;
+}
+.conversation-bubble:before,.conversation-bubble:after{
+  content: "";
+  display: block;
+  border-width: 20px;
+  position: absolute;
+  bottom: -40px;
+  left: 54px;
+  border-style: solid dashed dashed;
+  border-color: #fff transparent transparent;
+  font-size: 0;
+  line-height: 0;
+  margin-left:4px
+}
+
+.conversation-bubble:after{
+  bottom: -33px;
+  border-color: #fff transparent transparent;
+}
+.item {
+  /* position: relative; */
+  width: 100%;
+  /* top: 355rpx; */
+  display: flex;
+  align-items: center;
+  height: 90rpx;
+  background-color: rgba('255', '255', '255', 0.3);
+  border-bottom: 2rpx solid rgb(6, 209, 245);
+}
+.item_name{
+  font-size: 42rpx;
+  margin-left: 30rpx;
+}
+.right_arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  padding: 3px;
+  position: absolute;
+  right: 15px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}

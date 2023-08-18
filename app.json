@@ -1,0 +1,65 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/information/information",
+        "pages/msg/msg",
+        "pages/login/login",
+        "pages/regist/regist",
+        "pages/friend/friend",
+        "pages/person/person",
+        "pages/setting/setting",
+        "pages/setting/components/settingBz/settingBz",
+        "pages/setting/components/tagSelect/tagSelect",
+        "pages/friend/components/tags/tags",
+        "pages/friend/components/manageTag/manageTag",
+        "pages/friend/components/selectUser/selectUser",
+        "pages/friend/components/save/save",
+        "pages/friend/components/common/common",
+        "pages/friend/components/sendGroupMsg/sendGroupMsg",
+        "pages/me/components/userApply/userApply",
+        "pages/me/me"
+    ],
+    "subPackages": [],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "Weixin",
+        "navigationBarTextStyle": "black"
+    },
+
+    "sitemapLocation": "sitemap.json",
+    "tabBar" : {
+      "color": "#616161",
+      "selectedColor": "#2E312F",
+      "borderStyle": "black",
+      "list": [
+        {
+          "pagePath":"pages/information/information",
+          "text": "资讯",
+          "iconPath": "images/info.png",
+          "selectedIconPath": "images/info (1).png"
+        },
+        {
+          "pagePath":"pages/index/index",
+          "text": "消息",
+          "iconPath": "images/message-fill (1).png",
+          "selectedIconPath": "images/message-fill.png"
+        },
+        {
+          "pagePath":"pages/friend/friend",
+          "text": "联系人",
+          "iconPath": "images/team (1).png",
+          "selectedIconPath": "images/team.png"
+        },
+        {
+          "pagePath":"pages/me/me",
+          "text": "我的",
+          "iconPath": "images/user (1).png",
+          "selectedIconPath": "images/user.png"
+        }
+      ]
+    },
+    "usingComponents": {
+      "van-notice-bar": "@vant/weapp/notice-bar/index"
+    }
+}

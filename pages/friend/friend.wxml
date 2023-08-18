@@ -1,0 +1,58 @@
+<!--pages/friend/friend.wxml-->
+<link rel="stylesheet" href="https://res.wx.qq.com/wxdoc/dist/assets/weui.min.css"/>
+<view style="height: 100%;">
+  <view class="container">
+    <view class="tui-navigatorbar">
+     <view class="conversation-title">联系人</view>
+     <image class="navigatorbar_right" bind:tap="openMenu" src="./../../images/round_add_light.png"></image>
+     <view class="triangle"  wx:if="{{showMenu}}"></view>
+     <view class="menu" wx:if="{{showMenu}}">
+       <view class="menu-item" bind:tap="toGroupChat">发起群聊</view>
+       <view class="menu-item" bind:tap="sendGroupMsg">群发消息</view>
+     </view>
+   </view>
+   <view class="conversation-list-area">
+    <view class="topTools">
+      <view class="box" wx:if="{{friendList.length > 0}}" bind:tap="toTag">
+        <view class="box_image">
+          <image src="../../images/tag.png"></image>
+        </view>
+        <view class="text">
+          <view class="box_text">标签</view>
+        </view>
+      </view>
+    </view>
+    <van-index-bar>
+      <view wx:for="{{friendList}}" wx:key="index" style="margin-top: 50rpx;">
+        <van-index-anchor index="W"/>
+        <view class="box" bindtap="showInfo" data-index="{{index}}">
+          <view class="box_image">
+            <image src="{{item.avatarUrl}}"></image>
+          </view>
+          <view class="text">
+            <view class="box_text">{{item.bz ? item.bz : item.nickName}}</view>
+            <view class="box_text box_font">userID：{{friendList[index].phone}}</view>
+          </view>
+        </view>
+      </view>
+    </van-index-bar>
+   </view>
+  </view>
+  <van-dialog
+    use-slot
+    title="标题"
+    show="{{ show }}"
+    show-cancel-button
+    bind:close="onClose"
+    bind:confirm="initiveSession"
+  >
+    <view>
+      <view>
+        <image src="{{friendList[index].avatarUrl}}" />
+      </view>
+      <view>
+        <view>{{friendList[index].nickName}}</view>
+      </view>
+    </view>
+  </van-dialog>
+</view>

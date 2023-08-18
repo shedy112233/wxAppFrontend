@@ -1,0 +1,124 @@
+/* pages/friend/components/sendGroupMsg/sendGroupMsg.wxss */
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #F4F5F9;
+}
+.tui-navigatorbar{
+  position: absolute;
+  top: 0;
+  width: 750rpx;
+  height: 112rpx;
+  background-color: #006EFF;
+}
+.tui-navigatorbar-back{
+  position: absolute;
+  width: 48rpx;
+  height: 48rpx;
+  left: 40rpx;
+  bottom: 20rpx;
+}
+
+.conversation-title {
+  position: absolute;
+  width: 350rpx;
+  height: 88rpx;
+  line-height: 56rpx;
+  font-size: 36rpx;
+  color: #FFFFFF;
+  bottom: 0;
+  left: 200rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.message-list {
+  width: 100%;
+  height: 100%;
+  margin-top: -70rpx;
+}
+.sendPerson {
+  position: absolute;
+  width: 100%;
+  min-height: 100rpx;
+  left: 0px;
+  top: 0;
+  border: 1rpx solid red;
+}
+.tip{
+  font-size: 13px;
+  color: rgb(160, 158, 156);
+}
+.nick{
+  font-weight: 500!important;
+}
+.TUI-message-input-container {
+  background-color: #F1F1F1;
+}
+.TUI-message-input {
+  display: flex;
+  padding-bottom: 16rpx;
+  background-color: #F1F1F1;
+  width: 100vw;
+  overflow: scroll;
+}
+.TUI-icon {
+  width: 56rpx;
+  height: 56rpx;
+  margin: 0 16rpx;
+}
+.TUI-message-input-main {
+  height: 30px;
+  background-color: #fff;
+  flex: 1;
+  margin: 0 10rpx;
+  padding: 0 5rpx;
+  border-radius: 5rpx;
+  display: flex;
+  align-items: center;
+}
+.TUI-message-input-area {
+  width: 100%;
+  height: 100%;
+  max-height: 300rpx;
+  /* 最多显示10行 */
+  line-height: 30rpx;
+  overflow: scroll;
+}
+.TUI-message-input-functions {
+  display: flex;
+}
+.TUI-sendMessage-btn {
+  display: flex;
+  align-items: center;
+  margin: 0 10rpx;
+}
+.TUI-Extensions {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+  height: 450rpx;
+  margin-left: 14rpx;
+  margin-right: 14rpx;
+}
+.TUI-Extension-slot {
+  width: 128rpx;
+  height: 170rpx;
+  margin-left: 26rpx;
+  margin-right: 26rpx;
+  margin-top: 24rpx;
+}
+.TUI-Extension-icon {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 25%;
+}
+.TUI-Extension-slot-name {
+  line-height: 34rpx;
+  font-size: 24rpx;
+  color: #333333;
+  letter-spacing: 0;
+  text-align: center;
+}

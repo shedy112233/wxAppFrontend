@@ -1,0 +1,22 @@
+<!--index.wxml-->
+<!-- <view class="container">
+  <form bindsubmit="handleSubmit" wx:if="{{ onoff }}">
+ 用户名： <input type="text" name='username'/>
+ 密码： <input type="password" name='password'/>
+ 手机号： <input type="text" name='phone'/>
+ <button form-type="submit"> 注册 </button>
+</form>
+
+<form bindsubmit="handleLogin" wx:else>
+ 用户名： <input type="text" name='username'/>
+ 密码： <input type="password" name='password'/>
+ <button form-type="submit"> 登录 </button>
+</form>
+</view> -->
+<view>
+  <TUIKit config="{{config}}" id="TUIKit"></TUIKit>
+</view>
+
+
+
+

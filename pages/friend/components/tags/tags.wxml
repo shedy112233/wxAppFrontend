@@ -1,0 +1,19 @@
+<!--pages/friend/components/tags/tags.wxml-->
+<view class="content">
+  <view class="search">
+    <input class="input" placeholder="🔍搜索" type="text" bindinput="searchInfo"/>
+  </view>
+  <view class="cell_box" wx:for="{{tagList}}" wx:for-item="item" wx:key="i">
+    <van-cell-group inset>
+      <van-cell title="{{item.tagName}} ({{item.toolsImGroupTagUserVos.length}})" border="{{false}}" use-label-slot>
+        <view slot="label">
+          <view wx:for="{{item.toolsImGroupTagUserVos}}" wx:for-item="obj" wx:key="j">{{obj.nickName}},</view>
+        </view>
+      </van-cell>
+    </van-cell-group>
+  </view>
+  <view class="bottom_box">
+    <view class="left" bind:tap="createNewTag">新建</view>
+    <view class="right" bind:tap="toTagsManager">管理</view>
+  </view>
+</view>

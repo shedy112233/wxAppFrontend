@@ -1,0 +1,31 @@
+<!--pages/login/login.wxml-->
+<view class="container v1">
+  <view class="tui-navigatorbar"></view>
+  <view class="v2">
+    <view class="dltext">登陆</view>
+ 
+    <!-- 手机号 -->
+    <view class="phoneCs">
+      <image src="../../images/account.png" class="ph"></image>
+      <input placeholder="请输入手机号" bindinput="getPhone" bindblur="vaildPhone"/>
+    </view>
+ 
+    <!-- 密码 -->
+    <view class=passwordCs">
+      <image src="../../images/验证 验证码.png" class="ps"></image>
+      <input placeholder="验证码" type="text" bindinput="getCode"/>
+      <button class="eye" disabled="{{!canGetCaptcha}}" bind:tap="getCaptcha">{{captchaText}}</button>
+    </view>
+ 
+    <!-- 登录按钮 -->
+    <view class="denglu">
+      <button class="btn-dl" type="primary" bind:tap="login">登陆</button>
+    </view>
+
+    <!-- 注册 和忘记密码  -->
+    <view class="zhuce">
+      <navigator bind:tap="goRegister">立即注册</navigator>
+      <navigator></navigator>
+    </view>
+  </view>
+</view>

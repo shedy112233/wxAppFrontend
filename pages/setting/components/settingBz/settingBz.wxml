@@ -1,0 +1,77 @@
+<!--pages/setting/components/settingBz.wxml-->
+<wxs module="util" src="./utls.wxs"></wxs>
+<view>
+  <van-nav-bar
+    title="标题"
+    left-text="返回"
+    right-text="完成"
+    left-arrow
+    bind:click-left="onClickLeft"
+    bind:click-right="onClickRight"
+  />
+  <view class="set_header">
+    设置备注和标签
+  </view>
+  <view class="set_center">
+    <van-cell-group>
+      <van-field
+        model:value="{{ bz }}"
+        label="备注"
+        type="textarea"
+        placeholder="请输入备注"
+        autosize
+        border="{{ true }}"
+      />
+    </van-cell-group>
+  </view>
+  <view>
+    <van-cell-group>
+      <van-field
+        model:value="{{ value }}"
+        label="标签"
+        type="textarea"
+        placeholder="请输入标签"
+        autosize
+        border="{{ true }}"
+        right-icon="arrow"
+        bind:click-icon="clickIcon"
+      />
+    </van-cell-group>
+  </view>
+  <view>
+    <van-cell-group>
+      <van-field
+        model:value="{{ message }}"
+        label="描述"
+        type="textarea"
+        placeholder="请输入描述"
+        autosize
+        border="{{ true }}"
+      />
+    </van-cell-group>
+  </view>
+  <van-dialog
+    use-slot
+    title="设置标签"
+    show="{{ show }}"
+    show-cancel-button
+    bind:confirm="sureInfo"
+    bind:close="onClose"
+  >
+    <view style="padding-top: 20rpx;">
+      <view class="tag_select">
+        <view wx:for="{{selectTags}}" wx:key="index" class="tag">
+          <text>{{item.name}}</text>
+          <text style="margin-left: 8rpx;" bind:tap="delTag" data-index="{{item.index}}">x</text>
+        </view>
+      </view>
+      <!-- 空心样式标签，需要多个 -->
+      <view class="tag_all">
+        <!-- <view class="tag" style="{{util.getStyle({index: 0,tagStyle:tagStyle})}}" bind:tap="getTag" data-name="标签1" data-index="0">标签1</view>
+        <view class="tag" style="{{util.getStyle({index: 1,tagStyle:tagStyle})}}" bind:tap="getTag" data-name="标签2" data-index="1">标签2</view>
+        <view class="tag" style="{{util.getStyle({index: 2,tagStyle:tagStyle})}}" bind:tap="getTag" data-name="标签3" data-index="2">标签3</view> -->
+        <view class="tag" wx:for="{{tagsList}}" wx:key="index" style="{{util.getStyle({index: index,tagStyle:tagStyle})}}" bind:tap="getTag" data-name="{{item.tagName}}" data-index="{{index}}">{{item.tagName}}</view>
+      </view>
+    </view>
+  </van-dialog>
+</view>

@@ -1,0 +1,9 @@
+<view wx:for="{{renderDom}}" wx:key="index">
+    <view class="message-body-span-text {{item.flow === 'in' ? 'userNickL' : 'userNickR'}}">{{item.nick}}</view>
+    <view class="text-message {{isMine?'my-text':''}}">
+      <view class="message-body-span">
+        <view class="message-body-span-text" wx:if="{{item.name === 'span'}}">{{item.text}}</view>
+        <image wx:if="{{item.name === 'img'}}" class="emoji-icon" src="{{item.src}}" />
+      </view>
+    </view>
+  </view>

@@ -1,0 +1,18 @@
+var util = {
+  getStyle: function(value){
+    var tagStyle = value.tagStyle
+    var index = value.index
+    var result = ''
+    if(tagStyle.length > 0) {
+      for(var i=0;i<tagStyle.length;i++){
+        if(tagStyle[i].index === index){
+          result = tagStyle[i].style
+        }
+      }
+    }
+    return result
+  }
+}
+module.exports = {
+  getStyle: util.getStyle
+}
